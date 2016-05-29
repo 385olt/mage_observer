@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Centroida_Observer>
+            <codePool>local</codePool>
+            <active>true</active>
+        </Centroida_Observer>
+    </modules>
+</config>

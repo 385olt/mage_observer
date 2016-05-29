@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Centroida_Observer>
+            <version>0.1.0.0</version>
+        </Centroida_Observer>
+    </modules>
+    <global>
+        <models>
+            <centroidaobserver>
+                <class>Observer_Model</class>
+            </centroidaobserver>
+        </models>
+        <events>
+            <rest_api_product_save>
+                <observers>
+                    <centroida_observer_model_observer>
+                        <type>singleton</type>
+                        <class>Centroida_Observer_Model_Observer</class>
+                        <method>execute</method>
+                    </centroida_observer_model_observer>
+                </observers>
+            </rest_api_product_save>
+        </events>
+    </global>
+</config>

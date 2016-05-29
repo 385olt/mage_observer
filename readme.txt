@@ -1,0 +1,1 @@
+observer reacts to "rest_api_product_save"
