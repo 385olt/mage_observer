@@ -1,11 +1,9 @@
 <?php
 class Centroida_Observer_Model_Observer {
 
-    public function execute($observer) {
+    public function product_save($observer) {
         
         $sku = $observer->getSku();
-        
-        Mage::log($sku . " was saved!");
         
         $product = Mage::getModel('catalog/product');
         $product->load($product->getIdBySku($sku));
@@ -15,9 +13,28 @@ class Centroida_Observer_Model_Observer {
                 $product->setWebsiteIds(array(Mage::app()->getStore(true)->getWebsite()->getId()));
             }
             
+            $product->save();
             
-            Mage::log((string)$product->getId() . " with name " . $product->getName() . "\n");
-            $product->save(); 
+            Mage::log((string)$product->getId() . " with name " . $product->getName() . " was set website\n");
+        }
+        
+    }
+    
+    public function image_upload($observer) {
+        
+        $sku = $observer->getSku();
+        $image_url = $observer->getImage();
+        
+        $product = Mage::getModel('catalog/product');
+        $product->load($product->getIdBySku($sku));
+        
+        if ($image_url) {
+            $product->setImage($image_url)
+                ->setSmallImage($image_url)
+                ->setThumbnail($image_url)
+                ->save();
+        
+            Mage::log((string)$product->getId() . " with name " . $product->getName() . " was fixed image\n");
         }
         
     }

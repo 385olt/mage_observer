@@ -17,10 +17,19 @@
                     <centroida_observer_model_observer>
                         <type>singleton</type>
                         <class>Centroida_Observer_Model_Observer</class>
-                        <method>execute</method>
+                        <method>product_save</method>
                     </centroida_observer_model_observer>
                 </observers>
             </rest_api_product_save>
+            <rest_api_image_upload>
+                <observers>
+                    <centroida_observer_model_observer>
+                        <type>singleton</type>
+                        <class>Centroida_Observer_Model_Observer</class>
+                        <method>image_upload</method>
+                    </centroida_observer_model_observer>
+                </observers>
+            </rest_api_image_upload>
         </events>
     </global>
 </config>
